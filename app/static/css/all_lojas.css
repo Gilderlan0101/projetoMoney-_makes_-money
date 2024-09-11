@@ -1,0 +1,192 @@
+body {
+    background-color: rgb(51, 51, 51);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+header {
+    padding: 10px 20px;
+    text-align: center;
+    position: relative;
+    background-color: #000;
+}
+
+.central {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+#logo-site {
+    text-decoration: none;
+    font-size: 40px;
+    background: linear-gradient(90deg, #e1fa87, #c3f708);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: #fff;
+    margin-right: 20px;
+}
+
+#campo-de-pesquisar {
+    width: 100%;
+    max-width: 450px;
+    height: 50px;
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    margin: 10px 0;
+    text-align: center;
+    color: #000;
+    position: relative;
+    padding-right: 40px;
+    background-color: #9a9090;
+}
+
+#campo-de-pesquisar::placeholder {
+    color: #000;
+}
+
+#lupa {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+}
+
+#grupos-whatsapp, #grupo-telegram {
+    width: 24px;
+    height: 24px;
+    margin: 0 10px;
+}
+
+.contener {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.contener h2 {
+    position: absolute;
+    top: 30%;
+    left: 13%;
+}
+
+.contener a {
+    position: absolute;
+    top: 35%;
+    left: 90%;
+    color: #eeeeee;
+}
+
+.promo-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.promo-item {
+    margin: 10px;
+}
+
+.promo-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.promo-details {
+    padding: 15px;
+    margin: 0; /* Remover margem extra para melhor alinhamento */
+    background-color: #444; /* Cor de fundo opcional para destacar o texto */
+}
+
+.promo-name {
+    font-size: 16px;
+    margin: 0;
+    color: #fff;
+    text-decoration: none;
+}
+
+a {
+    color: inherit; /* Herda a cor do elemento pai */
+    text-decoration: none; /* Remove o sublinhado dos links */
+}
+
+.promo-price {
+    color: #eeeeee;
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.promo-company {
+    font-size: 14px;
+    color: #b4f512;
+}
+
+.ofertas h3 {
+    text-decoration: none;
+    font-size: 40px;
+    background: linear-gradient(90deg, #e1fa87, #c3f708);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: #fff;
+    margin-right: 20px;
+}
+
+.promo-item-borda {
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    background-color: #333;
+}
+
+
+
+
+/* Adicionando mídia queries para ajustes em telas menores */
+@media (max-width: 1200px) {
+    .promo-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 colunas em telas menores */
+    }
+}
+
+@media (max-width: 900px) {
+    .promo-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 colunas em telas ainda menores */
+    }
+}
+
+@media (max-width: 600px) {
+    .promo-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas em dispositivos muito pequenos */
+    }
+}
+
+@media (max-width: 400px) {
+    .promo-grid {
+        grid-template-columns: 1fr; /* 1 coluna em telas muito pequenas */
+    }
+}
+
+
+/* pc */
+
+/* @media (min-width: 1201px) { */
+    /* .central { */
+        /* border: 1px solid transparent; Define a largura da borda */
+        /* border-image: linear-gradient(90deg, #e1fa87, #c3f708) 1; Gradiente para a borda */
+        /* width: 100%; */
+        /* height: 100%; */
+    /* } */
+/* } */
+  

@@ -1,0 +1,6 @@
+Tecnologias: Python, flask, css, html, venv
+Python 3.10.12
+Flask 3.0.3
+Werkzeug 3.0.3
+
+links_icones: https://fontawesome.com/

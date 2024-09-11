@@ -1,0 +1,35 @@
+# Ignore the virtual environment folder
+venv/
+env/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore static files that should not be tracked
+/static/css/style.css
+/static/js/script.js
+/static/images/
+
+# Ignore system files and temporary files
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.swo
+.DS_Store
+
+# Ignore configuration and sensitive files
+config.py
+.env
+
+# Ignore IDE and editor specific files
+.vscode/
+.idea/
+*.iml
+
+# Ignore other system-specific files
+Thumbs.db
