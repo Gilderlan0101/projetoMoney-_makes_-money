@@ -13,6 +13,7 @@ header {
     position: fixed;
     background-color: #000;
     width: 100%;
+    z-index: 1000; /* Para garantir que o header fique acima do conteúdo */
     height: auto;
     
 }
@@ -78,19 +79,18 @@ header {
 }
 
 .contener {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100vh;
-    margin: 10px, 3px;
-  
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    border: 12px solid red;
+    
 }
-
 
 .contener h3 {
     position: absolute;
-    top: 18%;
+    top: 15%;
+    padding-top: 10px;
     left: -8%;
     display: flex;
     margin: 0 10%;
@@ -117,25 +117,33 @@ header {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    border: 1px solid red;
 }
 
 .promo-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
-}
-
-
-
-.promo-item  {
-    margin: 10px;
    
 }
 
+
+
+.promo-item {
+    background-color: rgb(51, 51, 51);
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    grid-template-columns: repeat(5, 1fr);
+    margin: 20px 10px 10px 10px; /* Adicionado um espaço no margin */
+    margin-top: 60px; /* Isso afasta do topo */
+}
+
+
 .promo-item img {
-    width: 100%;
+    max-width: 100px;
     height: auto;
-    object-fit: cover;
+    margin-bottom: 10px;
 }
 
 .promo-details {
@@ -227,12 +235,12 @@ a {
 
 /* pc */
 
-@media (min-width: 1201px) {
+/* @media (min-width: 1201px) {
     .central { 
         border: 1px solid transparent; 
         width: 100%;
         height: 100%;
-     } 
+     }  */
      /* Vamos deixa um pouco mais facil de visualiza no pc */
-}
+/* } */
   
