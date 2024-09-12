@@ -165,6 +165,12 @@ a {
     text-decoration: none; /* Remove o sublinhado dos links */
 }
 
+.price-original,
+.promo-price,
+.promo-company {
+    margin: 5px 0; /* Espaçamento acima e abaixo das informações de preço e companhia */
+}
+
 .promo-price {
     color: #eeeeee;
     font-size: 18px;
@@ -192,6 +198,24 @@ a {
     border-radius: 10px;
     background-color: #333;
     
+}
+
+#more-produtos {
+    margin-left: 47%; /* Move o item para o lado direito */
+    background: linear-gradient(90deg, #e1fa87, #c3f708);
+    padding: 10px;
+    border: none;
+    width: 100px;
+    border-radius: 10%;
+    color: #000;
+    cursor: pointer; /* Adiciona um cursor pointer para indicar que é clicável */
+    transition: all 0.3s ease; /* Adiciona uma transição suave para os efeitos de hover */
+}
+#more-produtos input :hover{
+    border: 2px solid #000000;
+    border-radius: 10px;
+    background-color: #333;
+    color: #ffffff; /* Altera a cor do texto no hover, se desejado */
 }
 
 

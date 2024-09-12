@@ -1,0 +1,11 @@
+[33mcommit 912638ac26c81c857cbb59bdfdf751a6ce2fe3b6[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Gilderlan silva da cruz <lansilva007@gmail.com>
+Date:   Wed Sep 11 21:57:41 2024 -0300
+
+    Alteramos o html e css para mostra um item abaixo do outro e links para os grupos do whatsapp e telegram os produtos estão visualmente melhor.
+
+[33mcommit 19e4ebf682e3f33f5cdffc4f571f7d3326e2efe6[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Gilderlan silva da cruz <lansilva007@gmail.com>
+Date:   Wed Sep 11 16:36:29 2024 -0300
+
+    Estrutura padrão do projeto | seguimos daqu

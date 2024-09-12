@@ -1,0 +1,5 @@
+Se estiver pronto para enviar as alterações ao repositório remoto (como GitHub, GitLab, etc.), use o comando:
+
+bash
+
+git push origin master

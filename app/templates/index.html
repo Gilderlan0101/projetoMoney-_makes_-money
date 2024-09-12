@@ -38,7 +38,7 @@
             <div class="promo-item">
                 <img src="{{url_for('static', filename='imagem/mercado-livre.png')}}" alt="Produto 2">
                 <div class="promo-details">
-                    <p class="promo-name">Mercado livreeeeeeeee</p>
+                    <p class="promo-name">Mercado livre</p>
                 </div>
             </div>
             <div class="promo-item">
@@ -84,225 +84,23 @@
         </div>
 
     </div>
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/mercado-livre.png')}}" alt="Produto 2">
+    {% for product in products %}
+    <div class="promo-item">
+        <img src="{{ product.thumbnail }}" alt="{{ product.title }}">
         <div class="promo-details">
-            <p class="promo-name">Mercado Livre</p>  <!--Aqui deve ser um link com o nome do produto-->
-            <p class="promo-price">$29.99</p>
-            <p class="promo-company">Vendido por: Empresa B</p>
+            <a href="{{ product.url }}" target="_blank"></a>
+            <p class="promo-name">{{ product.title }}</p>
+            <p class="price-original">De R$ {{ product.original_price }}</p>
+            <p class="promo-price">Por R$ {{ product.promo_price }}</p>
+            <p class="promo-company">Vendido por: {{ product.company }}</p>
         </div>
     </div>
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/amazon-2.svg')}}" alt="Produto 3">
-        <div class="promo-details">
-            <p class="promo-name">Amazon</p> <!--Aqui deve ser um link com o nome do produto-->
-            <p class="promo-price">$39.99</p>
-            <p class="promo-company">Vendido por: Empresa C</p>
-        </div>
-    </div>
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/casas-bahia.svg')}}" alt="Produto 4">
-        <div class="promo-details">
-            <p class="promo-name">Casas Bahia</p> <!--Aqui deve ser um link com o nome do produto-->
-            <p class="promo-price">$49.99</p>
-            <p class="promo-company">Vendido por: Empresa D</p>
-        </div>
-    </div>
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/americanas.svg')}}" alt="Produto 5">
-        <div class="promo-details">
-            <p class="promo-name">Americanas</p> <!--Aqui deve ser um link com o nome do produto-->
-            <p class="promo-price">$59.99</p> 
-            <p class="promo-company">Vendido por: Empresa E</p>
-        </div>
-    </div>
+    {% endfor %}
+    
 </div>
-<!-- Abaixo temos os produtos em promoção -->
-
-
-<div class="promo-grid promo-borda">
-    <div class="promo-item promo-item-borda">
-        <img  src="{{url_for('static', filename='imagem/shoppe.png')}}" alt="Produto 1">
-        <div class="promo-details">
-            <p class="promo-name">Shopee</p>
-            <p class="promo-price">$19.99</p>
-            <p class="promo-company">Vendido por: Empresa A</p>
-        </div>
-    </div>
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/mercado-livre.png')}}" alt="Produto 2">
-        <div class="promo-details">
-            <p class="promo-name">Mercado Livre</p>
-            <p class="promo-price">$29.99</p>
-            <p class="promo-company">Vendido por: Empresa B</p>
-        </div>
-    </div>
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/amazon-2.svg')}}" alt="Produto 3">
-        <div class="promo-details">
-            <p class="promo-name">Amazon</p>
-            <p class="promo-price">$39.99</p>
-            <p class="promo-company">Vendido por: Empresa C</p>
-        </div>
-    </div>
-    <!-- produtos -->
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/casas-bahia.svg')}}" alt="Produto 4">
-        <div class="promo-details">
-            <p class="promo-name">Casas Bahia</p>
-            <p class="promo-price">$49.99</p>
-            <p class="promo-company">Vendido por: Empresa D</p>
-        </div>
-    </div>
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/americanas.svg')}}" alt="Produto 5">
-        <div class="promo-details">
-            <p class="promo-name">Americanas</p>
-            <p class="promo-price">$59.99</p>
-            <p class="promo-company">Vendido por: Empresa E</p>
-        </div>
-    </div>
-</div>
-  <!-- produtos -->
-<div class="promo-grid promo-borda">
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/shoppe.png')}}" alt="Produto 1">
-        <div class="promo-details">
-            <p class="promo-name">Shopee</p>
-            <p class="promo-price">$19.99</p>
-            <p class="promo-company">Vendido por: Empresa A</p>
-        </div>
-    </div>
-      <!-- produtos -->
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/mercado-livre.png')}}" alt="Produto 2">
-        <div class="promo-details">
-            <p class="promo-name">Mercado Livre</p>
-            <p class="promo-price">$29.99</p>
-            <p class="promo-company">Vendido por: Empresa B</p>
-        </div>
-    </div>
-      <!-- produtos -->
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/amazon-2.svg')}}" alt="Produto 3">
-        <div class="promo-details">
-            <p class="promo-name">Amazon</p>
-            <p class="promo-price">$39.99</p>
-            <p class="promo-company">Vendido por: Empresa C</p>
-        </div>
-    </div>
-      <!-- produtos -->
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/casas-bahia.svg')}}" alt="Produto 4">
-        <div class="promo-details">
-            <p class="promo-name">Casas Bahia</p>
-            <p class="promo-price">$49.99</p>
-            <p class="promo-company">Vendido por: Empresa D</p>
-        </div>
-    </div>
-      <!-- produtos -->
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/americanas.svg')}}" alt="Produto 5">
-        <div class="promo-details">
-            <p class="promo-name">Americanas</p>
-            <p class="promo-price">$59.99</p>
-            <p class="promo-company">Vendido por: Empresa E</p>
-        </div>
-    </div>
-</div>
-  <!-- produtos -->
-<div class="promo-grid promo-borda">
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/shoppe.png')}}" alt="Produto 1">
-        <div class="promo-details">
-            <p class="promo-name">Shopee</p>
-            <p class="promo-price">$19.99</p>
-            <p class="promo-company">Vendido por: Empresa A</p>
-        </div>
-    </div>
-      <!-- produtos -->
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/mercado-livre.png')}}" alt="Produto 2">
-        <div class="promo-details">
-            <p class="promo-name">Mercado Livre</p>
-            <p class="promo-price">$29.99</p>
-            <p class="promo-company">Vendido por: Empresa B</p>
-        </div>
-    </div>
-      <!-- produtos -->
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/amazon-2.svg')}}" alt="Produto 3">
-        <div class="promo-details">
-            <p class="promo-name">Amazon</p>
-            <p class="promo-price">$39.99</p>
-            <p class="promo-company">Vendido por: Empresa C</p>
-        </div>
-    </div>
-      <!-- produtos -->
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/casas-bahia.svg')}}" alt="Produto 4">
-        <div class="promo-details">
-            <p class="promo-name">Casas Bahia</p>
-            <p class="promo-price">$49.99</p>
-            <p class="promo-company">Vendido por: Empresa D</p>
-        </div>
-    </div>
-      <!-- produtos -->
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/americanas.svg')}}" alt="Produto 5">
-        <div class="promo-details">
-            <p class="promo-name">Americanas</p>
-            <p class="promo-price">$59.99</p>
-            <p class="promo-company">Vendido por: Empresa E</p>
-        </div>
-    </div>
-</div>
-  <!-- produtos -->
-<div class="promo-grid promo-borda">
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/shoppe.png')}}" alt="Produto 1">
-        <div class="promo-details">
-            <p class="promo-name">Shopee</p>
-            <p class="promo-price">$19.99</p>
-            <p class="promo-company">Vendido por: Empresa A</p>
-        </div>
-    </div>
-      <!-- produtos -->
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/mercado-livre.png')}}" alt="Produto 2">
-        <div class="promo-details">
-            <p class="promo-name">Mercado Livre</p>
-            <p class="promo-price">$29.99</p>
-            <p class="promo-company">Vendido por: Empresa B</p>
-        </div>
-    </div>
-      <!-- produtos -->
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/amazon-2.svg')}}" alt="Produto 3">
-        <div class="promo-details">
-            <p class="promo-name">Amazon</p>
-            <p class="promo-price">$39.99</p>
-            <p class="promo-company">Vendido por: Empresa C</p>
-        </div>
-          <!-- produtos -->
-    </div>
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/casas-bahia.svg')}}" alt="Produto 4">
-        <div class="promo-details">
-            <p class="promo-name">Casas Bahia</p>
-            <p class="promo-price">$49.99</p>
-            <p class="promo-company">Vendido por: Empresa D</p>
-        </div>
-          <!-- produtos -->
-    </div>
-    <div class="promo-item promo-item-borda">
-        <img src="{{url_for('static', filename='imagem/americanas.svg')}}" alt="Produto 5">
-        <div class="promo-details">
-            <p class="promo-name">Americanas</p>
-            <p class="promo-price">$59.99</p>
-            <p class="promo-company">Vendido por: Empresa E</p>
-        </div>
-    </div>
+    
+<div class="more-produtos">
+    <input type="button" name="more-produtos" id="more-produtos" value="Ver mais">
 </div>
 
     <!-- <footer>PromoDia</footer> -->
