@@ -33,3 +33,10 @@ config.py
 
 # Ignore other system-specific files
 Thumbs.db
+
+# Ignore specific files
+.promodia/requirements.txt
+dicas.txt
+
+# Ignore logs
+*.log
