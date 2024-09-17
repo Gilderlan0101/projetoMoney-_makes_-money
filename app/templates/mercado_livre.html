@@ -26,43 +26,17 @@
         </div>
     </header>
 
-    <div class="contener">
-        <h2>Lojas em promoção:</h2>
-       
-        <div class="promo-grid">
-            <div class="promo-item">
-                <img src="{{url_for('static', filename='imagem/shoppe.png')}}" alt="Produto 1">
-                <div class="promo-details">
-                    <p class="promo-name">Shopee</p>
-                </div>
-            </div>
-            <div class="promo-item">
-                <img src="{{url_for('static', filename='imagem/mercado-livre.png')}}" alt="Produto 2">
-                <div class="promo-details">
-                    <p class="promo-name">Mercado livre</p>
-                </div>
-            </div>
-            <div class="promo-item">
-                <img src="{{url_for('static', filename='imagem/amazon-2.svg')}}" alt="Produto 3">
-                <div class="promo-details">
-                    <p class="promo-name">Amazon</p>
-                 
-                </div>
-            </div>
-            <div class="promo-item">
-                <img src="{{url_for('static', filename='imagem/casas-bahia.svg')}}" alt="Produto 4">
-                <div class="promo-details">
-                    <p class="promo-name">Casas bahia</p>
-                </div>
-            </div>
-            <div class="promo-item">
-                <img src="{{url_for('static', filename='imagem/americanas.svg')}}" alt="Produto 5">
-                <div class="promo-details">
-                    <p class="promo-name">Americanas</p>
-                </div>
-                
-            </div>
+    <!-- Produtos em promoção -->
+    {% for product in products %}
+    <div class="promo-item">
+        <img src="{{ product.thumbnail }}" alt="{{ product.title }}">
+        <div class="promo-details">
+            <a href="{{ product.url }}" target="_blank">{{ product.title }}</a>
+            <p class="price-original">De R$ {{ product.original_price }}</p>
+            <p class="promo-price">Por R$ {{ product.promo_price }}</p>
+            <p class="promo-company">Vendido por: {{ product.company }}</p>
         </div>
     </div>
+    {% endfor %}
 </body>
 </html>

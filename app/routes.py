@@ -1,22 +1,22 @@
-from flask import render_template, Blueprint
+from flask import render_template, Blueprint, request, current_app
 import requests
-
+import random
 
 main = Blueprint('main', __name__)
 
+# Lista de termos de pesquisa aleatórios
+RANDOM_TERMS = ['smartphone', 'televisão', 'tablet', 'fones de ouvido', 'mouse', 'teclado', 'relógio', 'bicicleta', 'câmera', 'cadeira']
 
-# Configurações da API do Mercado Livre
-ML_API_URL = "https://api.mercadolibre.com/sites/MLB/search" # Coloca isso no arquivo privado
-ML_QUERY = "laptop"  # Exemplo de termo de pesquisa
-
-def fetch_mercado_livre_products():
-    """Busca produtos na API do Mercado Livre"""
+def fetch_mercado_livre_products(query):
+    """Busca produtos na API do Mercado Livre com base em um termo de pesquisa"""
+    ML_API_URL = current_app.config['ML_API_URL']  # Obtém a URL da API das configurações
     try:
-        response = requests.get(ML_API_URL, params={'q': ML_QUERY})
+        response = requests.get(ML_API_URL, params={'q': query})
         response.raise_for_status()  # Verifica se houve erro na requisição
         data = response.json()  # Tenta decodificar a resposta como JSON
         
         # Adiciona logging para depuração
+        print("Response Status Code:", response.status_code)
         print("Response Data:", data)
 
         # Mapeia os dados do Mercado Livre para a estrutura esperada no template
@@ -38,13 +38,21 @@ def fetch_mercado_livre_products():
         print("Request Exception:", e)
         return []
 
+
 @main.route('/')
 def home():
+    # Se nenhum termo for passado na URL, escolhe um termo aleatório da lista
+    query = request.args.get('query', random.choice(RANDOM_TERMS))
+
     # Solicita os dados da API do Mercado Livre
-    mercado_livre_products = fetch_mercado_livre_products()
+    mercado_livre_products = fetch_mercado_livre_products(query)
 
     # Se não houver produtos do Mercado Livre, exibe uma mensagem de erro ou retorna uma lista vazia
     if not mercado_livre_products:
         return "Nenhum produto encontrado no Mercado Livre."
 
     return render_template('index.html', products=mercado_livre_products)
+
+@main.route('/mercado_livre')
+def mercado():
+    return render_template('mercado_livre.html')
