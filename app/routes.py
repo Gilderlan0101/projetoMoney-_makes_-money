@@ -1,6 +1,7 @@
 from flask import render_template, Blueprint, request, current_app
 import requests
 import random
+from .utils import cache, config
 
 main = Blueprint('main', __name__)
 
@@ -54,5 +55,13 @@ def home():
     return render_template('index.html', products=mercado_livre_products)
 
 @main.route('/mercado_livre')
+@cache.cached(timeout=50)
 def mercado():
-    return render_template('mercado_livre.html')
+    query = request.args.get('query', random.choice(RANDOM_TERMS))
+
+    # Solicita os dados da API do Mercado Livre
+    mercado_livre_products = fetch_mercado_livre_products(query)
+
+    if not mercado_livre_products:
+        return "Nenhum produto encontrado no Mercado Livre."
+    return render_template('mercado_livre.html',  products=mercado_livre_products)

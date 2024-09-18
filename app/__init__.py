@@ -1,6 +1,7 @@
 import os
 from flask import Flask
 from .routes import main
+from .utils import cache, config
 
 def create_app():
     app = Flask(__name__)
@@ -13,5 +14,8 @@ def create_app():
 
     # Registra o blueprint
     app.register_blueprint(main)
+
+    app.config.from_mapping(config)
+    cache.init_app(app) 
 
     return app

@@ -33,7 +33,7 @@
         <h3>Lojas em promoção:</h3>
        
             <!-- Repetir outros itens de promoção -->
-        </div>
+        </div>CC
         <!-- Adiciona link que  leva para a pagina de apenas produtos do mercado livre -->
             <div class="promo-item">
                 <img src="{{url_for('static', filename='imagem/mercado-livre.png')}}" alt="Produto 2">
@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="promo-item">
-                <img src="{{url_for('static', filename='imagem/amazon-2.svg')}}" alt="Produto 3">
+                <a href="{{url_for('main.mercado')}}"></a><img src="{{url_for('static', filename='imagem/amazon-2.svg')}}" alt="Produto 3">
                 <div class="promo-details">
                     <p class="promo-name">Amazon</p>
                  
