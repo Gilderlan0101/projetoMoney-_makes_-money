@@ -31,11 +31,12 @@
     <div class="promo-item">
         <img src="{{ product.thumbnail }}" alt="{{ product.title }}">
         <div class="promo-details">
-            <a href="{{ product.url }}" target="_blank"></a>
+            <a href="{{ product.url }}" target="_blank">
             <p class="promo-name">{{ product.title }}</p>
-            <p class="price-original">De R$ {{ product.original_price }}</p>
+            
             <p class="promo-price">Por R$ {{ product.promo_price }}</p>
             <p class="promo-company">Vendido por: {{ product.company }}</p>
+        </a>
         </div>
     </div>
     {% endfor %}

@@ -1,8 +1,22 @@
-from flask import render_template, Blueprint, request, current_app
-import requests
+from flask import Blueprint, render_template, request
 import random
-from .utils import cache, config
+import requests 
+from .utils import cache
+import os
+from dotenv import load_dotenv
 
+# Carregar variáveis de ambiente
+load_dotenv()
+
+# Obtém a chave da API do Mercado Livre do arquivo .env
+KEY = os.getenv('KEY')
+URL = os.getenv('ML_API_URL')
+
+# Verificar se a chave da API foi carregada corretamente
+if not KEY:
+    raise ValueError("Chave da API do Mercado Livre não encontrada. Verifique o arquivo .env")
+
+# Cria um blueprint para a rota principal
 main = Blueprint('main', __name__)
 
 # Lista de termos de pesquisa aleatórios
@@ -10,12 +24,11 @@ RANDOM_TERMS = ['smartphone', 'televisão', 'tablet', 'fones de ouvido', 'mouse'
 
 def fetch_mercado_livre_products(query):
     """Busca produtos na API do Mercado Livre com base em um termo de pesquisa"""
-    ML_API_URL = current_app.config['ML_API_URL']  # Obtém a URL da API das configurações
     try:
-        response = requests.get(ML_API_URL, params={'q': query})
+        response = requests.get(URL, params={'q': query, 'access_token': KEY})
         response.raise_for_status()  # Verifica se houve erro na requisição
         data = response.json()  # Tenta decodificar a resposta como JSON
-        
+
         # Adiciona logging para depuração
         print("Response Status Code:", response.status_code)
         print("Response Data:", data)
@@ -25,20 +38,19 @@ def fetch_mercado_livre_products(query):
         for item in data.get('results', []):
             product = {
                 'title': item.get('title'),
-                'thumbnail': item.get('thumbnail', '/path/to/default-image.jpg'),
+                'thumbnail': item.get('thumbnail') if item.get('thumbnail') else '/static/default-image.jpg',  # Fallback para imagem padrão
                 'original_price': item.get('price'),
                 'promo_price': item.get('price'),  # Se não houver preço promocional separado, use o mesmo preço
                 'company': 'Mercado Livre',
                 'url': item.get('permalink')  # Link para o produto no Mercado Livre
             }
             products.append(product)
-        
+
         return products
-    
+
     except requests.exceptions.RequestException as e:
         print("Request Exception:", e)
         return []
-
 
 @main.route('/')
 def home():
@@ -56,7 +68,7 @@ def home():
 
 @main.route('/mercado_livre')
 @cache.cached(timeout=50)
-def mercado():
+def mercado_livre():
     query = request.args.get('query', random.choice(RANDOM_TERMS))
 
     # Solicita os dados da API do Mercado Livre
@@ -64,4 +76,4 @@ def mercado():
 
     if not mercado_livre_products:
         return "Nenhum produto encontrado no Mercado Livre."
-    return render_template('mercado_livre.html',  products=mercado_livre_products)
+    return render_template('mercado_livre.html', products=mercado_livre_products)

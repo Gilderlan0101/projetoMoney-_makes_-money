@@ -1,21 +1,33 @@
-import os
 from flask import Flask
 from .routes import main
-from .utils import cache, config
+from .utils import cache
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 def create_app():
     app = Flask(__name__)
 
-    # Caminho absoluto para o arquivo config.py dentro do diretório .promodia (venv)
-    config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../.promodia/config.py')
+    # Carregando o cache e as variáveis de ambiente
     
-    # Carregando a configuração a partir do arquivo config.py
-    app.config.from_pyfile(config_path)
+    app.config['DEBUG'] = os.getenv('DEBUG')
+    app.secret_key = os.getenv('KEY')
 
     # Registra o blueprint
     app.register_blueprint(main)
 
-    app.config.from_mapping(config)
+    # Inicializa o cache
     cache.init_app(app) 
+
+    @app.after_request
+    def add_cache_headers(response):
+        if response.content_type.startswith('image'):
+            response.headers['Cache-Control'] = 'public, max-age=259200'  # 3 day
+        return response
+
+    # Função add_cache_headers(response): Esta função verifica o tipo de conteúdo da resposta e, se for uma imagem, adiciona
+    # um cabeçalho de cache para armazenar a imagem no cache do navegador por 3 dias (max-age=259200).
+    # Isso pode ajudar a melhorar o desempenho ao evitar que o navegador baixe a imagem novamente em futuras requisições.
+
 
     return app

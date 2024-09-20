@@ -31,22 +31,28 @@
 
     <div class="contener">
         <h3>Lojas em promoção:</h3>
-       
+        
+        <br>
             <!-- Repetir outros itens de promoção -->
-        </div>CC
+        </div>
         <!-- Adiciona link que  leva para a pagina de apenas produtos do mercado livre -->
             <div class="promo-item">
+                <a href="{{url_for('main.mercado_livre')}}">
                 <img src="{{url_for('static', filename='imagem/mercado-livre.png')}}" alt="Produto 2">
                 <div class="promo-details">
                     <p class="promo-name">Mercado livre</p>
+                </a>
                 </div>
             </div>
             <div class="promo-item">
-                <a href="{{url_for('main.mercado')}}"></a><img src="{{url_for('static', filename='imagem/amazon-2.svg')}}" alt="Produto 3">
-                <div class="promo-details">
-                    <p class="promo-name">Amazon</p>
-                 
-                </div>
+                <div class="promo-item">
+                    <a href="#"> 
+                    <img src="{{url_for('static', filename='imagem/amazon.svg')}}" alt="Produto 2">
+                    <div class="promo-details">
+                        <p class="promo-name">Amazon</p>
+                    </a>
+                    </div>
+
             </div>
             <div class="promo-item">
                 <img src="{{url_for('static', filename='imagem/casas-bahia.svg')}}" alt="Produto 4">
@@ -88,11 +94,12 @@
     <div class="promo-item">
         <img src="{{ product.thumbnail }}" alt="{{ product.title }}">
         <div class="promo-details">
-            <a href="{{ product.url }}" target="_blank"></a>
+            <a href="{{ product.url }}" target="_blank">
             <p class="promo-name">{{ product.title }}</p>
-            <p class="price-original">De R$ {{ product.original_price }}</p>
+          
             <p class="promo-price">Por R$ {{ product.promo_price }}</p>
             <p class="promo-company">Vendido por: {{ product.company }}</p>
+        </a>
         </div>
     </div>
     {% endfor %}

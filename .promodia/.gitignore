@@ -40,3 +40,5 @@ dicas.txt
 
 # Ignore logs
 *.log
+.env
+.h origin master
