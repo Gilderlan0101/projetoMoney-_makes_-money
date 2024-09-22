@@ -24,6 +24,7 @@ def create_app():
         if response.content_type.startswith('image'):
             response.headers['Cache-Control'] = 'public, max-age=259200'  # 3 day
         return response
+    
 
     # Função add_cache_headers(response): Esta função verifica o tipo de conteúdo da resposta e, se for uma imagem, adiciona
     # um cabeçalho de cache para armazenar a imagem no cache do navegador por 3 dias (max-age=259200).

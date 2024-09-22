@@ -7,6 +7,7 @@ def scraping_zoom():
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
     }
     response = requests.get(url, headers=headers)
+#########################################################################################################################################
 
     if response.status_code == 200:
         soup = BeautifulSoup(response.text, "html.parser")
@@ -16,6 +17,7 @@ def scraping_zoom():
         
         produtos = []
 
+#########################################################################################################################################
         for container in product_containers:
             # Extraindo o nome do produto
             nome = container.find(class_="ProductCard_ProductCard_Name__U_mUQ")
@@ -45,6 +47,7 @@ def scraping_zoom():
             # Extraindo a condição (ex: Cashback)
             cashback = container.find(class_="ProductCard_ProductCard_CashbackInfoLabel__Td_EJ")
             cashback_info = cashback.text.strip() if cashback else 'Cashback não encontrado'
+#########################################################################################################################################
 
             produtos.append({
                 'name': nome_produto,
@@ -58,6 +61,5 @@ def scraping_zoom():
         
         return produtos
 
-go = scraping_zoom()
-for produto in go:
-    print(produto)
+
+

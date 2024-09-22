@@ -3,7 +3,6 @@ from flask import Blueprint, render_template, request
 import random
 import os
 from dotenv import load_dotenv
-from app.services.scraping_amazon import scrape_products
 from app.services.scraping_zoom import scraping_zoom
 
 
@@ -44,9 +43,11 @@ def fetch_mercado_livre_products(query):
     except requests.exceptions.RequestException as e:
         print("Request Exception:", e)
         return []
-
-@main.route('/')
+#########################################################################################################################################
+@main.route('/', methods=['GET', 'POST'])
 def home():
+   
+   
     produtos = scraping_zoom() # zoom.com
     query = request.args.get('query', random.choice(RANDOM_TERMS))
     mercado_livre_products = fetch_mercado_livre_products(query)
@@ -56,8 +57,9 @@ def home():
 
     return render_template('index.html', mercado_livre=mercado_livre_products,produto=produtos)
 
+#########################################################################################################################################
 
-@main.route('/zoom')
+@main.route('/mercado_livre')
 def mercado_livre():
     produtos = scraping_zoom()
 
