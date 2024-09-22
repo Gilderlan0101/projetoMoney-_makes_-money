@@ -4,6 +4,7 @@ import random
 import os
 from dotenv import load_dotenv
 from app.services.scraping_amazon import scrape_products
+from app.services.scraping_zoom import scraping_zoom
 
 
 # Carregar variáveis de ambiente
@@ -46,18 +47,19 @@ def fetch_mercado_livre_products(query):
 
 @main.route('/')
 def home():
+    produtos = scraping_zoom() # zoom.com
     query = request.args.get('query', random.choice(RANDOM_TERMS))
     mercado_livre_products = fetch_mercado_livre_products(query)
     print(mercado_livre_products)  # No método home
     if not mercado_livre_products:
         return "Nenhum produto encontrado no Mercado Livre."
 
-    return render_template('index.html', products=mercado_livre_products)
+    return render_template('index.html', mercado_livre=mercado_livre_products,produto=produtos)
 
 
-@main.route('/mercado_livre')
+@main.route('/zoom')
 def mercado_livre():
-    produtos = scrape_products()
+    produtos = scraping_zoom()
 
     if not produtos:
         return "Nenhum produto encontrado no site de scraping."

@@ -90,7 +90,7 @@
         </div>
 
     </div>
-    {% for product in products %}
+    {% for product in mercado_livre %}
     <div class="promo-item">
         <img src="{{ product.thumbnail }}" alt="{{ product.title }}">
         <div class="promo-details">
@@ -99,6 +99,20 @@
           
             <p class="promo-price">Por R$ {{ product.promo_price }}</p>
             <p class="promo-company">Vendido por: {{ product.company }}</p>
+        </a>
+        </div>
+    </div>
+    {% endfor %}
+    
+    {% for product in produto %}
+    <div class="promo-item">
+        <img src="{{ product.image }}"" alt="imagem do produto" class="thumbnail">
+
+        <div class="promo-details">
+            <a href="https://www.zoom.com.br/?og=18000&og=18000&gad_source=1&gclid=Cj0KCQjw3bm3BhDJARIsAKnHoVWW8OBS5VZ4LsMD_KbqIlBYHFRonyZ_sTj3gfCKke880QqmqVRdwbsaAuiqEALw_wcB" target="_blank">
+                <p class="promo-name">{{ product.name }}</p>
+            <p class="promo-price">Por R$ {{ product.value }}</p>
+            <p class="promo-company">Vendido por: {{ product.cashback }}</p>
         </a>
         </div>
     </div>

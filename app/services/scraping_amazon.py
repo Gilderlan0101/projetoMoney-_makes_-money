@@ -1,8 +1,8 @@
-from flask import Flask, render_template
+
 import requests
 from bs4 import BeautifulSoup
 
-app = Flask(__name__)
+
 
 def scrape_products():
     url = "http://books.toscrape.com/"  # Exemplo de site
