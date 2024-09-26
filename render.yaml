@@ -1,0 +1,20 @@
+# Exported from Render on 2024-09-26T20:06:27Z
+services:
+- type: web
+  name: PromoDia
+  runtime: python
+  repo: https://github.com/Gilderlan0101/projetoMoney-_makes_-money
+  plan: free
+  envVars:
+  - key: RANDOM_TERMS
+    sync: false
+  - key: ML_API_URL
+    sync: false
+  - key: KEY
+    sync: false
+  region: oregon
+  buildCommand: pip install -r requirements.txt
+  startCommand: gunicorn 'app.__init__:create_app()'
+  previews:
+    generation: automatic
+version: "1"
