@@ -14,6 +14,7 @@ main = Blueprint('main', __name__)
 @main.route('/', methods=['GET', 'POST'])
 def home():
     produtos = scraping_zoom()  # zoom.com
+    print(produtos)
     # Gera três termos de busca aleatórios
     queries = random.choices(rando_terms, k=3)
     # Busca produtos no Mercado Livre para os três termos distintos
