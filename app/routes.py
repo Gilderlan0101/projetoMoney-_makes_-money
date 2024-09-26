@@ -30,9 +30,11 @@ def home():
 @main.route('/mercado_livre')
 def mercado_livre():
     produtos = scraping_zoom()
+    queries = random.choices(rando_terms, k=3)
+    mercado_livre_products = fetch_mercado_livre_products(queries)
 
     if not produtos:
         return "Nenhum produto encontrado no site de scraping."
 
 
-    return render_template('mercado_livre.html', products=produtos)
+    return render_template('mercado_livre.html', mercado_livre=mercado_livre_products)

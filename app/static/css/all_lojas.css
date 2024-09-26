@@ -11,6 +11,7 @@ header {
     text-align: center;
     position: relative;
     background-color: #000;
+    height: auto;
 }
 
 .central {
@@ -53,7 +54,7 @@ header {
 
 #lupa {
     position: absolute;
-    right: 15px;
+    right: 26px;
     top: 50%;
     transform: translateY(-50%);
     width: 24px;
@@ -65,6 +66,8 @@ header {
     width: 24px;
     height: 24px;
     margin: 0 10px;
+    font-size: medium;
+    
 }
 
 .contener {
@@ -171,29 +174,22 @@ a {
     .promo-grid {
         grid-template-columns: repeat(3, 1fr); /* 3 colunas em telas ainda menores */
     }
+  
 }
 
 @media (max-width: 600px) {
     .promo-grid {
         grid-template-columns: repeat(2, 1fr); /* 2 colunas em dispositivos muito pequenos */
     }
+    .header{
+        width: 100px;
+    }
 }
 
 @media (max-width: 400px) {
     .promo-grid {
         grid-template-columns: 1fr; /* 1 coluna em telas muito pequenas */
-    }
-}
 
+}}
 
-/* pc */
-
-/* @media (min-width: 1201px) { */
-    /* .central { */
-        /* border: 1px solid transparent; Define a largura da borda */
-        /* border-image: linear-gradient(90deg, #e1fa87, #c3f708) 1; Gradiente para a borda */
-        /* width: 100%; */
-        /* height: 100%; */
-    /* } */
-/* } */
   
