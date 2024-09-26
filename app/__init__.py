@@ -19,11 +19,7 @@ def create_app():
     # Inicializa o cache
     cache.init_app(app) 
 
-    @app.after_request
-    def add_cache_headers(response):
-        if response.content_type.startswith('image'):
-            response.headers['Cache-Control'] = 'public, max-age=259200'  # 3 day
-        return response
+  
     
 
     # Função add_cache_headers(response): Esta função verifica o tipo de conteúdo da resposta e, se for uma imagem, adiciona

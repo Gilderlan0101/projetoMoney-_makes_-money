@@ -2,22 +2,25 @@ import requests
 from bs4 import BeautifulSoup
 
 def scraping_zoom():
-    url = "https://www.zoom.com.br/?og=18000&og=18000&gad_source=1&gclid=Cj0KCQjw3bm3BhDJARIsAKnHoVWW8OBS5VZ4LsMD_KbqIlBYHFRonyZ_sTj3gfCKke880QqmqVRdwbsaAuiqEALw_wcB"
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
-    }
-    response = requests.get(url, headers=headers)
-#########################################################################################################################################
+    try:
 
-    if response.status_code == 200:
-        soup = BeautifulSoup(response.text, "html.parser")
-
+        url = "https://www.zoom.com.br/?og=18000&og=18000&gad_source=1&gclid=Cj0KCQjw3bm3BhDJARIsAKnHoVWW8OBS5VZ4LsMD_KbqIlBYHFRonyZ_sTj3gfCKke880QqmqVRdwbsaAuiqEALw_wcB"
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+        }
+        response = requests.get(url, headers=headers)
+        # codigo que precisa ser executado mesmo com um erro de exsesão
+    finally:
+            if response.status_code == 200:
+                soup = BeautifulSoup(response.text, "html.parser")
         # Usando a classe correta para o container de produtos
-        product_containers = soup.find_all(class_="ProductCard_ProductCard_Inner__gapsh")
+                product_containers = soup.find_all(class_="ProductCard_ProductCard_Inner__gapsh")
         
-        produtos = []
+                produtos = []
 
 #########################################################################################################################################
+    try:
+
         for container in product_containers:
             # Extraindo o nome do produto
             nome = container.find(class_="ProductCard_ProductCard_Name__U_mUQ")
@@ -58,8 +61,9 @@ def scraping_zoom():
                 'rating': rating_produto,
                 'cashback': cashback_info
             })
+    except (KeyError, FileNotFoundError) as  e:
+        return f' Erro ao tenta acessar produtos do zoom.com {e} tente novamente.'
         
-        return produtos
-
+    return produtos
 
 

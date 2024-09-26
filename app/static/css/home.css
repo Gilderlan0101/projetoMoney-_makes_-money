@@ -217,6 +217,19 @@ a {
     background-color: #333;
     color: #ffffff; /* Altera a cor do texto no hover, se desejado */
 }
+.rodape {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente se houver altura definida */
+    text-align: center; /* Centraliza o texto */
+    padding: 20px; /* Espaçamento interno */
+    background-color: #000;
+}
+
+.rodape p {
+    max-width: 800px; /* Define um limite para a largura do texto */
+    margin: 0; /* Remove margens extras */
+}
 
 
 
