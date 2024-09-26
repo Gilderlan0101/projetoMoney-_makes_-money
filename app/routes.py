@@ -1,5 +1,5 @@
-import requests
-from flask import Blueprint, render_template, request
+
+from flask import Blueprint, render_template
 import random
 from app.services.scraping_zoom import scraping_zoom
 from app.services.mercado_livre import fetch_mercado_livre_products
