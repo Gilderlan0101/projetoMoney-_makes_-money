@@ -17,7 +17,6 @@ def fetch_mercado_livre_products(queries):
     for query in queries:  # Itera sobre cada termo de busca
         try:
             response = requests.get(URL, params={'q': query, 'access_token': KEY})
-            print(response.text)  # Exibe a resposta para depuração
             response.raise_for_status()
             data = response.json()
             
@@ -41,4 +40,4 @@ def fetch_mercado_livre_products(queries):
 
 # Exemplo de chamada à função
 products = fetch_mercado_livre_products(RANDOM_TERMS)
-print(products)
+

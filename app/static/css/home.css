@@ -1,12 +1,13 @@
+/* Estilo básico do corpo */
 body {
     background-color: rgb(51, 51, 51);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0;
     padding: 0;
     color: #fff;
-    padding: 0;
 }
 
+/* Estilo do cabeçalho */
 header {
     padding: 10px 20px;
     text-align: center;
@@ -15,19 +16,31 @@ header {
     width: 100%;
     z-index: 1000; /* Para garantir que o header fique acima do conteúdo */
     height: auto;
-    
+    gap: 2px;
 }
 
+/* Estilos de entrada */
+input {
+    background: rgba(255, 255, 255, 0.3);
+    height: 45px; 
+    line-height: 45px;
+    border-radius: 20px;
+    border: none;
+    padding: 0 10px; 
+    color: white;
+    margin-bottom: 15px; 
+}
+
+/* Estilo central */
 .central {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     color: #fff;
-   
-    
 }
 
+/* Estilo do logo */
 #logo-site {
     text-decoration: none;
     font-size: 40px;
@@ -39,6 +52,7 @@ header {
     margin-right: 20px;
 }
 
+/* Estilo do campo de pesquisa */
 #campo-de-pesquisar {
     width: 100%;
     max-width: 450px;
@@ -52,13 +66,13 @@ header {
     position: relative;
     padding-right: 40px;
     background-color: #9a9090;
-    
 }
 
 #campo-de-pesquisar::placeholder {
     color: #000;
 }
 
+/* Estilo dos ícones */
 #lupa {
     position: absolute;
     left: 55%;
@@ -67,67 +81,32 @@ header {
     width: 24px;
     height: 24px;
     pointer-events: none;
-
-    
+    border: none;
 }
 
 #grupos-whatsapp, #grupo-telegram, #cupom {
     width: 24px;
     height: 24px;
     margin: 0 10px;
-    
 }
 
+/* Estilo do container */
 .contener {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px;
     padding: 20px;
-    border: 12px solid red;
     
 }
 
-.contener h3 {
-    position: absolute;
-    top: 15%;
-    padding-top: 10px;
-    left: -8%;
-    display: flex;
-    margin: 0 10%;
-    text-decoration: none;
-    background: linear-gradient(90deg, #e1fa87, #c3f708);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    
-    
-    /* Problema: deve se tipo flax e quando user rola a pagina para baixo o txt deve subir e sumir |  com js */
-    /* Quando resolver isso apague esse comentario */
-}
-
-.contener a {
-    position: absolute;
-    top: 18%;
-    left: 90%;
-    color: #eeeeee;
-
-    text-decoration: none;
-    
-    background: linear-gradient(90deg, #e1fa87, #c3f708);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    border: 1px solid red;
-}
-
+/* Estilo das promoções */
 .promo-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
-   
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.75);
+    border-radius: 20px;
 }
-
-
 
 .promo-item {
     background-color: rgb(51, 51, 51);
@@ -135,10 +114,10 @@ header {
     padding: 10px;
     text-align: center;
     grid-template-columns: repeat(5, 1fr);
-    margin: 20px 10px 10px 10px; /* Adicionado um espaço no margin */
-    margin-top: 60px; /* Isso afasta do topo */
+    margin: 20px 10px 10px 10px; 
+    margin-top: 60px; 
+    border-radius: 20px;
 }
-
 
 .promo-item img {
     max-width: 100px;
@@ -148,9 +127,9 @@ header {
 
 .promo-details {
     padding: 15px;
-    margin: 0; /* Remover margem extra para melhor alinhamento */
-    background-color: #444; /* Cor de fundo opcional para destacar o texto */
-    
+    margin: 0; 
+    background-color: #444; 
+    border-radius: 20px;
 }
 
 .promo-name {
@@ -161,14 +140,8 @@ header {
 }
 
 a {
-    color: inherit; /* Herda a cor do elemento pai */
-    text-decoration: none; /* Remove o sublinhado dos links */
-}
-
-.price-original,
-.promo-price,
-.promo-company {
-    margin: 5px 0; /* Espaçamento acima e abaixo das informações de preço e companhia */
+    color: inherit; 
+    text-decoration: none; 
 }
 
 .promo-price {
@@ -182,102 +155,109 @@ a {
     color: #b4f512;
 }
 
-.ofertas h3 {
-    text-decoration: none;
-    font-size: 40px;
-    background: linear-gradient(90deg, #e1fa87, #c3f708);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: #fff;
-    margin-right: 20px;
-}
-
-.promo-item-borda {
-    border: 2px solid #ffffff;
-    border-radius: 10px;
-    background-color: #333;
-    
-}
-
+/* Estilo do botão "Mais Produtos" */
 #more-produtos {
-    margin-left: 47%; /* Move o item para o lado direito */
+    margin-left: 47%; 
     background: linear-gradient(90deg, #e1fa87, #c3f708);
     padding: 10px;
     border: none;
     width: 100px;
     border-radius: 10%;
     color: #000;
-    cursor: pointer; /* Adiciona um cursor pointer para indicar que é clicável */
-    transition: all 0.3s ease; /* Adiciona uma transição suave para os efeitos de hover */
+    cursor: pointer; 
+    transition: all 0.3s ease; 
 }
-#more-produtos input :hover{
+
+/* Hover para o botão "Mais Produtos" */
+#more-produtos:hover {
     border: 2px solid #000000;
     border-radius: 10px;
     background-color: #333;
-    color: #ffffff; /* Altera a cor do texto no hover, se desejado */
+    color: #ffffff; 
 }
+
+/* Estilo do rodapé */
 .rodape {
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente se houver altura definida */
-    text-align: center; /* Centraliza o texto */
-    padding: 20px; /* Espaçamento interno */
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    padding: 20px; 
     background-color: #000;
 }
 
 .rodape p {
-    max-width: 800px; /* Define um limite para a largura do texto */
-    margin: 0; /* Remove margens extras */
+    max-width: 800px; 
+    margin: 0; 
 }
 
-
-
-/* add um hove nas bordas, as cores sempre mantendo o pradão do site  */
-
+/* Efeitos hover nas promoções */
 .promo-item:hover {
     border: 2px solid #ffffff;
     border-radius: 10px;
     background-color: #333;
 }
 
-
-
 /* Adicionando mídia queries para ajustes em telas menores */
 @media (max-width: 1200px) {
     .promo-grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 colunas em telas menores */
+        grid-template-columns: repeat(4, 1fr); 
     }
 }
 
 @media (max-width: 900px) {
     .promo-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 colunas em telas ainda menores */
+        grid-template-columns: repeat(3, 1fr); 
     }
 }
 
 @media (max-width: 600px) {
     .promo-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 colunas em dispositivos muito pequenos */
+        grid-template-columns: repeat(2, 1fr); 
     }
+
 }
 
 @media (max-width: 400px) {
     .promo-grid {
-        grid-template-columns: 1fr; /* 1 coluna em telas muito pequenas */
+        grid-template-columns: 1fr; 
     }
-    
+
+    /* Ajustes específicos para o header em telas menores */
+    header {
+        padding: 5px 10px; /* Menos espaço no cabeçalho */
+        font-size: 16px; /* Tamanho de fonte menor */
+    }
+
+    /* Estilizando as promoções para se ajustarem melhor em telas pequenas */
+    .promo-item {
+        padding: 8px; /* Menos padding em promoções */
+    }
+
+    .promo-item img {
+        max-width: 80px; /* Tamanho menor das imagens */
+    }
+
+    .promo-name {
+        font-size: 14px; /* Tamanho da fonte menor */
+    }
+
+    .promo-price {
+        font-size: 16px; /* Tamanho da fonte menor para preço */
+    }
+
+    #lupa{
+        left: 80%;
+        top: 48%;
+    }
+
+    #campo-de-pesquisar{
+        width: 90%;
+        right: 10px;
+    }
+
+    #more-produtos {
+        width: 80%; /* Amplitude do botão em dispositivos menores */
+        margin: 0 auto; /* Centralizar o botão */
+    }
 }
-
-
-/* pc */
-
-/* @media (min-width: 1201px) {
-    .central { 
-        border: 1px solid transparent; 
-        width: 100%;
-        height: 100%;
-     }  */
-     /* Vamos deixa um pouco mais facil de visualiza no pc */
-/* } */
-  

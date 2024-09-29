@@ -8,9 +8,9 @@ load_dotenv()
 
 def create_app():
     app = Flask(__name__)    
-    app.config['DEBUG'] = os.getenv('DEBUG')
+    app.config['DEBUG'] = True
     app.secret_key = os.getenv('KEY')
-
+    
     # Registra o blueprint
     app.register_blueprint(main)
 
