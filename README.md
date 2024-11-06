@@ -11,3 +11,20 @@ Tecnologias Utilizadas
 
     Python e BeautifulSoup: Para realizar o scraping de dados das lojas.
     Flask (ou outro framework web): Para hospedar o site e exibir as promoções.
+
+Como Usar
+
+    Clone o repositório:
+
+git clone https://github.com/Gilderlan0101/projetoMoney-_makes_-money.git
+
+Instale as dependências:
+
+pip install -r requirements.txt
+
+Configure as URLs das lojas para fazer scraping (detalhes no arquivo de configuração).
+Inicie o servidor local:
+
+    python app.py
+
+Acesse o site localmente em http://localhost:5000 para visualizar as promoções mais recentes.
