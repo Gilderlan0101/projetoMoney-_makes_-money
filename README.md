@@ -1,4 +1,4 @@
-Promodia
+Promodia | codigo livre, apenas mude o html crie um novo ou atualize esse
 
 Promodia é um script automatizado que coleta promoções publicadas por lojas e exibe essas informações de forma organizada em um site. Utilizando BeautifulSoup para fazer web scraping, o Promodia reúne e atualiza ofertas, facilitando a visualização das melhores promoções disponíveis.
 Funcionalidades
