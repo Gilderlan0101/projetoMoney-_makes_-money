@@ -4,40 +4,42 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-KEY = os.getenv('KEY')
-URL = os.getenv('ML_API_URL')
-RANDOM_TERMS = os.getenv('RANDOM_TERMS').split(',')  # Carrega os termos em uma lista
+CATEGORIES_URL = os.getenv('ML_API_URL')  # URL para obter categorias
+SEARCH_URL = "https://api.mercadolibre.com/sites/MLB/search"  # URL para buscar produtos
 
-if not KEY or not URL:
-    raise ValueError("Chave da API ou URL do Mercado Livre não encontrada. Verifique o arquivo .env")
+def fetch_categories():
+    """
+    Obtém a lista de categorias do Mercado Livre.
+    :return: Lista de categorias principais
+    """
+    try:
+        response = requests.get(CATEGORIES_URL)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Erro ao buscar categorias: {e}")
+        return []
 
-def fetch_mercado_livre_products(queries):
-    products = []
-    
-    for query in queries:  # Itera sobre cada termo de busca
-        try:
-            response = requests.get(URL, params={'q': query, 'access_token': KEY})
-            response.raise_for_status()
-            data = response.json()
-            
-            for item in data.get('results', []):
-                product = {
-                    'title': item.get('title'),
-                    'thumbnail': item.get('thumbnail', '/static/default-image.jpg'),
-                    'original_price': item.get('price'),
-                    'promo_price': item.get('price'),
-                    'company': 'Mercado Livre',
-                    'url': item.get('permalink')
-                }
-                products.append(product)
-
-        except requests.exceptions.RequestException as e:
-            print(f"Erro ao buscar {query}: {e}")
-            print(f"Resposta: {response.text if 'response' in locals() else 'N/A'}")
-            continue
-
-    return products
-
-# Exemplo de chamada à função
-products = fetch_mercado_livre_products(RANDOM_TERMS)
-
+def fetch_products_by_category(category_id):
+    """
+    Busca produtos de uma categoria específica.
+    :param category_id: ID da categoria (ex.: MLB1144 para Games)
+    :return: Lista de produtos
+    """
+    try:
+        response = requests.get(SEARCH_URL, params={'category': category_id})
+        response.raise_for_status()
+        data = response.json()
+        products = []
+        for item in data.get('results', []):
+            product = {
+                'title': item.get('title'),
+                'thumbnail': item.get('thumbnail', '/static/default-image.jpg'),
+                'price': item.get('price'),
+                'permalink': item.get('permalink')
+            }
+            products.append(product)
+        return products
+    except requests.exceptions.RequestException as e:
+        print(f"Erro ao buscar produtos da categoria {category_id}: {e}")
+        return []

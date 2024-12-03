@@ -28,3 +28,4 @@ Inicie o servidor local:
     python app.py
 
 Acesse o site localmente em http://localhost:5000 para visualizar as promoções mais recentes.
+# gamefacil
