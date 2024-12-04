@@ -2,7 +2,7 @@
 from flask import Blueprint, render_template
 import random
 from app.services.scraping_zoom import scraping_zoom
-from app.services.mercado_livre import  fetch_products_by_category
+from app.services.mercado_livre import  fetch_products_by_query
 
 from dotenv import load_dotenv
 import os
@@ -17,10 +17,10 @@ def home():
     produtos = scraping_zoom()  # scraping do site Zoom
     
     # Escolhe aleatoriamente 1 termo para busca (a partir de RANDOM_TERMS)
-    queries = random.choices(RANDOM_TERMS, k=1)
+    queries = random.choices(RANDOM_TERMS)
     
     # Busca produtos no Mercado Livre para os termos escolhidos
-    mercado_livre_products = fetch_products_by_category(queries)
+    mercado_livre_products = fetch_products_by_query(queries)
 
     print(mercado_livre_products)
     
@@ -37,7 +37,7 @@ def home():
 def mercado_livre():
     produtos = scraping_zoom()
     queries = random.choices(RANDOM_TERMS)
-    mercado_livre_products = fetch_products_by_category(queries)
+    mercado_livre_products = fetch_products_by_query(queries)
 
     if not produtos:
         return "Nenhum produto encontrado no site de promoção tente no grupo na pagina home."

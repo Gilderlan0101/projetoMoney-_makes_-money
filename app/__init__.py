@@ -1,5 +1,5 @@
 from flask import Flask
-from .routes import main
+from .routes.routes import main
 from .utils import cache
 import os
 from dotenv import load_dotenv

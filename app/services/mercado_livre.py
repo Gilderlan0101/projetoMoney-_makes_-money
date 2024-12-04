@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-CATEGORIES_URL = os.getenv('ML_API_URL')  # URL para obter categorias
+CATEGORIES_URL = os.getenv('ML_API_URL','https://api.mercadolibre.com/sites/MLB/search?category=MLB1144')  # URL para obter categorias
 SEARCH_URL = "https://api.mercadolibre.com/sites/MLB/search"  # URL para buscar produtos
 
 def fetch_categories():
@@ -20,26 +20,33 @@ def fetch_categories():
         print(f"Erro ao buscar categorias: {e}")
         return []
 
-def fetch_products_by_category(category_id):
+        
+def fetch_products_by_query(query='Games'):
     """
-    Busca produtos de uma categoria específica.
-    :param category_id: ID da categoria (ex.: MLB1144 para Games)
+    Busca produtos relacionados à categoria de games e palavra-chave específica.
+    :param query: Termo de busca (ex.: Games)
     :return: Lista de produtos
     """
     try:
-        response = requests.get(SEARCH_URL, params={'category': category_id})
+        response = requests.get(
+            SEARCH_URL, 
+            params={
+                'q': query,          # Palavra-chave
+                'category': 'MLB1144'  # ID da categoria de Games
+            }
+        )
         response.raise_for_status()
         data = response.json()
-        products = []
-        for item in data.get('results', []):
-            product = {
+        print(f"Dados retornados pela busca: {data}")
+        return [
+            {
                 'title': item.get('title'),
                 'thumbnail': item.get('thumbnail', '/static/default-image.jpg'),
                 'price': item.get('price'),
                 'permalink': item.get('permalink')
             }
-            products.append(product)
-        return products
+            for item in data.get('results', [])
+        ]
     except requests.exceptions.RequestException as e:
-        print(f"Erro ao buscar produtos da categoria {category_id}: {e}")
+        print(f"Erro ao buscar produtos para o termo {query}: {e}")
         return []
